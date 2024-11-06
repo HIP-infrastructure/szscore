@@ -4,7 +4,7 @@ Application bundling algorithms to be run against data available on the HIP. See
 
 ## Algorithms
 
-- [Gotman1982](./gotman_1982.sh) from <https://github.com/esl-epfl/gotman_1982>
+- [Gotman1982](./gotman1982.sh) from <https://github.com/esl-epfl/gotman_1982>
 
 ## Acknowledgement
 
