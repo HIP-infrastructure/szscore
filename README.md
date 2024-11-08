@@ -1,4 +1,4 @@
-# SzSocre
+# SzCore
 
 Application bundling algorithms to be run against data available on the HIP. See: <https://github.com/esl-epfl/szcore/>
 
