@@ -25,16 +25,17 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
+        git \
         python3 \
-        python3-pip \
         python3-numpy \
-        git && \
+        python3-pip \
+    && \
     pip install --no-cache-dir -U pip && \
     pip install --no-cache-dir --ignore-requires-python \
-        "git+https://github.com/danjjl/szcore-evaluation@master#egg=szcore-evaluation" && \
-    \
-    ./${APP_VERSION}.sh && \
-    \
+        "git+https://github.com/danjjl/szcore-evaluation@master#egg=szcore-evaluation" \
+    && \
+    ./${APP_VERSION}.sh \
+    && \
     apt-get remove -y --purge \
         git && \
     apt-get autoremove -y --purge && \
