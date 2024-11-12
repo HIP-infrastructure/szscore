@@ -20,10 +20,24 @@ WORKDIR /apps/${APP_NAME}
 # and does the apt-get install/cleanup dance around it.
 COPY ./apps/${APP_NAME}/${APP_VERSION}.sh .
 
+# The szcore-evaluation package pin Python 3.12, when it's all 3.10 here.
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && \
     apt-get upgrade -y && \
-    ./${APP_VERSION}.sh && \
+    apt-get install -y --no-install-recommends \
+        git \
+        python3 \
+        python3-numpy \
+        python3-pip \
+    && \
+    pip install --no-cache-dir -U pip && \
+    pip install --no-cache-dir --ignore-requires-python \
+        "git+https://github.com/greut/szcore-evaluation@patch-2#egg=szcore-evaluation" \
+    && \
+    ./${APP_VERSION}.sh \
+    && \
+    apt-get remove -y --purge \
+        git && \
     apt-get autoremove -y --purge && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
