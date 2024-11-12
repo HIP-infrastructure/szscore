@@ -32,7 +32,7 @@ RUN apt-get update && \
     && \
     pip install --no-cache-dir -U pip && \
     pip install --no-cache-dir --ignore-requires-python \
-        "git+https://github.com/danjjl/szcore-evaluation@master#egg=szcore-evaluation" \
+        "git+https://github.com/greut/szcore-evaluation@patch-2#egg=szcore-evaluation" \
     && \
     ./${APP_VERSION}.sh \
     && \
